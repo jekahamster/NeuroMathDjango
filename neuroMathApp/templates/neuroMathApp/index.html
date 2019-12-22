@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NeuroMath</title>
+	<meta name="viewport" content="width=device-width, initial-scale = 1">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="form">
+			<canvas id="canvas"></canvas>
+			<div id="controls-block">
+				<div id="output">
+					<div class="mdl-textfield mdl-js-textfield">
+						<input class="mdl-textfield__input" type="text" id="numOut" placeholder="Number...">
+					</div>
+				</div>
+
+				<div id="adjust">
+					<span>Adjust?</span>
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="adjust-button">ADJUST</button>
+				</div>
+
+				<div id="brush-type">
+					<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="brush">
+						<input type="radio" id="brush" class="mdl-radio__button" name="options" checked>
+						<span class="mdl-radio__label">Brush</span>
+					</label>
+					<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="lastic">
+						<input type="radio" id="lastic" class="mdl-radio__button" name="options">
+						<span class="mdl-radio__label">Lastic</span>
+					</label>
+				</div>
+
+				<div id="brush-size">
+					<input id="brush-size-input" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="5" tabindex="0">
+					<span id="brush-size-val">5</span>
+				</div>
+
+				<div id="control-buttons">
+					<button id="clear-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">CLEAR</button>
+					<button id="doit-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">DO IT</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

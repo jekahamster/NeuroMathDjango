@@ -1,0 +1,79 @@
+* { margin: 0; padding: 0; }
+
+#wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	background: linear-gradient(0deg, #00537E, #3AA17E);
+}
+
+#form {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 80%;
+	width: 90%;
+	background: rgba(255, 255, 255, 0.7);
+	border-radius: 20px;
+	box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
+}
+
+#canvas {
+	background-color: black;
+	width: 60%;
+	height: 95%;
+	margin-left: 10px;
+	border-radius: 10px;
+}
+
+#controls-block {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+
+	width: 35%;
+	height: 95%;
+	margin-right: 10px;
+	border-radius: 10px;
+}
+
+#output > div {
+	width: 100%;
+}
+
+#numOut {
+	font-size: 1.2em;
+}
+
+#adjust > span {
+	font-size: 1.3em;
+}
+
+#controls-block > div:not(#brush-size) {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+
+#brush-size {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.mdl-button {
+	background-color: rgb(63,81,181);
+	color: white;
+	font-size: 1.2em;
+}
+
+.mdl-button:hover {
+	background-color: rgb(63,81,181);
+}
+
+.mdl-slider__container {
+	width: 80%;
+}
