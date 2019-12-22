@@ -34,25 +34,32 @@ $(() => {
 	});
 
 	$("#canvas").on("touchstart", (downEvent) => {
-		ctx.beginPath();
-		ctx.arc(downEvent.offsetX, downEvent.offsetY, ctx.lineWidth/2, 0, 2*Math.PI);
-		ctx.fill();
-		ctx.closePath();
+		let dtouches = downEvent.changedTouches;
+		let dx = dtouches[0].pageX - $("#canvas").offset().left;
+		let dy = dtouches[0].pageY - $("#canvas").offset().top;
+		// ctx.beginPath();
+		// ctx.arc(dx, dy, ctx.lineWidth/2, 0, 2*Math.PI);
+		// ctx.fill();
+		// ctx.closePath();
 		ctx.beginPath();
 		ctx.moveTo(downEvent.offsetX, downEvent.offsetY);
 		$(this).on("touchmove", (moveEvent) => {
 			let touches = moveEvent.changedTouches;
-			console.log(touches[0]);
-			ctx.lineTo(moveEvent.offsetX, moveEvent.offsetY);
+			let x = touches[0].pageX - $("#canvas").offset().left;
+			let y = touches[0].pageY - $("#canvas").offset().top;
+			ctx.lineTo(x, y);
 			ctx.stroke();
 		});
 	});
 
 	$("#canvas").on("touchend", (upEvent) => {
 		$(this).unbind("touchmove");
+		let utouches = upEvent.changedTouches;
+		let ux = utouches[0].pageX - $("#canvas").offset().left;
+		let uy = utouches[0].pageY - $("#canvas").offset().top;
 		ctx.closePath();
 		ctx.beginPath();
-		ctx.arc(upEvent.offsetX, upEvent.offsetY, ctx.lineWidth/2, 0, 2*Math.PI);
+		ctx.arc(ux, uy, ctx.lineWidth/2, 0, 2*Math.PI);
 		ctx.fill();
 		ctx.closePath();
 	});
@@ -68,6 +75,19 @@ $(() => {
 
 	$("#brush-size-input").on("mouseup", () => {
 		$(this).unbind("mousemove");
+		ctx.closePath();
+	});
+
+	$("#brush-size-input").on("touchstart", () => {
+		$(this).on("touchmove", () => {
+			let tempBrushSize = $("#brush-size-input").val();
+			$("#brush-size-val").text(tempBrushSize);
+			ctx.lineWidth = tempBrushSize;
+		});
+	});
+
+	$("#brush-size-input").on("touchend", () => {
+		$(this).unbind("touchmove");
 		ctx.closePath();
 	});
 
@@ -162,4 +182,19 @@ $(() => {
 		canvas.height = $("#canvas").height();
 	});
 
+	$("#fullScreen").click(() => {
+		fullScreen(document.getElementsByTagName("html")[0]);
+	});
+
 });
+
+function fullScreen(element) {
+	try { element.requestFullscreen(); } 
+	catch (e) {}
+
+	try { element.webkitRequestFullscreen(); }
+	catch (e) {}
+
+	try { element.mozRequestFullScreen(); }
+	catch (e) {}
+}
