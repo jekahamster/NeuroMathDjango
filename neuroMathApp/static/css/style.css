@@ -10,7 +10,6 @@
 }
 
 #form {
-	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -63,26 +62,6 @@
 	display: flex;
 	justify-content: center;
 	width: 100%;
-}
-
-#fullScreen {
-	position: absolute;
-	right: -20px;
-	top: -20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 50px;
-	height: 50px;
-	border-radius: 100%;
-	background: rgba(255, 255, 255, 1);
-	user-select: none;
-	cursor: pointer;
-
-}
-
-#fullScreen > i {
-	font-size: 2.5em;
 }
 
 .mdl-button {
