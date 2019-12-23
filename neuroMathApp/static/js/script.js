@@ -8,7 +8,7 @@ $(() => {
 
 	ctx.strokeStyle = "white";
 	ctx.fillStyle = "white";
-	ctx.lineWidth = "5";
+	ctx.lineWidth = $("#brush-size-input").val();
 	ctx.lineJoin = "round";
 
 	$("#canvas").on("mousedown", (downEvent) => {
@@ -113,6 +113,13 @@ $(() => {
 	});
 
 	$("#doit-button").click(() => {
+		$("#loadlay").css({
+			"display": "flex",
+		});
+		$("#loadlay").animate({
+			"opacity": "1",
+		}, 500);
+
 		let prevLineWidth = ctx.lineWidth;
 		let prevStrokeStyle = ctx.strokeStyle;
 		ctx.strokeStyle = "black";
@@ -134,10 +141,26 @@ $(() => {
 				"canvasURL": canvas.toDataURL(),
 			}),
 			success: (data) => {
-				console.log(data);
+				$("#loadlay").animate({
+					"opacity": "0",
+				}, 500, () => {
+					$("#loadlay").css({
+						"display": "none",
+					});
+				});
+
 				$("#numOut").val(data);
+				console.log(data);
 			},
 			error: (data) => {
+				$("#loadlay").animate({
+					"opacity": "0",
+				}, 500, () => {
+					$("#loadlay").css({
+						"display": "none",
+					});
+				});
+
 				console.log(data);
 				console.log(data.responseText);
 				console.log(data.statusText);
@@ -148,6 +171,13 @@ $(() => {
 	});
 
 	$("#adjust-button").click(() => {
+		$("#loadlay").css({
+			"display": "flex",
+		});
+		$("#loadlay").animate({
+			"opacity": "1",
+		}, 500);
+
 		let text = $("#numOut").val();
 		let prevLineWidth = ctx.lineWidth;
 		let prevStrokeStyle = ctx.strokeStyle;
@@ -170,10 +200,25 @@ $(() => {
 				"text": text,
 			}),
 			success: (data) => {
+				$("#loadlay").animate({
+					"opacity": "0",
+				}, 500, () => {
+					$("#loadlay").css({
+						"display": "none",
+					});
+				});
+
 				console.log(data);
-				alert(data);
 			},
 			error: (data) => {
+				$("#loadlay").animate({
+					"opacity": "0",
+				}, 500, () => {
+					$("#loadlay").css({
+						"display": "none",
+					});
+				});
+
 				console.log(data);
 				console.log(data.responseText);
 				console.log(data.statusText);
@@ -191,6 +236,22 @@ $(() => {
 
 	$("#fullScreen").click(() => {
 		fullScreen(document.getElementsByTagName("html")[0]);
+	});
+
+	$("#settings").click(() => {
+		let y = $("#form").height();
+		let x = $("#form").width();
+
+		$("#settings").animate({
+			"top": y/2-250+"px",
+			"right": x/2-250+"px",
+		}, 300);
+		$("#settings-window").css({"display": "flex"});
+		$("#settings-window").animate({
+			"width": 500+"px",
+			"height": 500+"px",
+		}, 300);
+
 	});
 
 });

@@ -8,7 +8,7 @@
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
@@ -41,7 +41,7 @@
 				</div>
 
 				<div id="brush-size">
-					<input id="brush-size-input" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="5" tabindex="0">
+					<input id="brush-size-input" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="20" tabindex="0">
 					<span id="brush-size-val">5</span>
 				</div>
 
@@ -52,6 +52,13 @@
 			</div>
 			<div id="fullScreen">
 				<i class="material-icons">fullscreen</i>
+			</div>
+			<div id="settings">
+				<i class="material-icons">brightness_high</i>
+				<div id="settings-window">asd</div>
+			</div>
+			<div id="loadlay">
+				<div class="mdl-spinner mdl-js-spinner is-active"></div>
 			</div>
 		</div>
 	</div>
